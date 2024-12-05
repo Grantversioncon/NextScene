@@ -382,69 +382,78 @@
         </div>
       `;
     }
-    const movies = {
+   const movies = {
   actionShort: {
     title: "John Wick",
     director: "Chad Stahelski",
     duration: "1h 41m",
     year: "2014",
-    description: "A stylish action thriller with precise choreography and intense action sequences."
+    description: "A stylish action thriller with precise choreography and intense action sequences.",
+    imdbId: "tt2911666"
   },
   actionMedium: {
     title: "Inception",
     director: "Christopher Nolan",
     duration: "2h 28m",
     year: "2010",
-    description: "A mind-bending science fiction masterpiece exploring dreams within dreams."
+    description: "A mind-bending science fiction masterpiece exploring dreams within dreams.",
+    imdbId: "tt1375666"
   },
   actionLong: {
     title: "The Batman",
     director: "Matt Reeves",
     duration: "2h 56m",
     year: "2022",
-    description: "A dark, atmospheric noir take on the legendary detective superhero."
+    description: "A dark, atmospheric noir take on the legendary detective superhero.",
+    imdbId: "tt1877830"
   },
   dramaShort: {
     title: "Whiplash",
     director: "Damien Chazelle",
     duration: "1h 47m",
     year: "2014",
-    description: "An intense psychological drama about the pursuit of musical perfection."
+    description: "An intense psychological drama about the pursuit of musical perfection.",
+    imdbId: "tt2582802"
   },
   dramaMedium: {
     title: "Parasite",
     director: "Bong Joon-ho",
     duration: "2h 12m",
     year: "2019",
-    description: "A masterful social commentary blending dark humor with profound insights."
+    description: "A masterful social commentary blending dark humor with profound insights.",
+    imdbId: "tt6751668"
   },
   dramaLong: {
     title: "The Godfather",
     director: "Francis Ford Coppola",
     duration: "2h 55m",
     year: "1972",
-    description: "An epic crime drama exploring family, power, and the American Dream."
+    description: "An epic crime drama exploring family, power, and the American Dream.",
+    imdbId: "tt0068646"
   },
   artShort: {
     title: "The Lighthouse",
     director: "Robert Eggers",
     duration: "1h 49m",
     year: "2019",
-    description: "A hypnotic psychological horror filmed in striking black and white."
+    description: "A hypnotic psychological horror filmed in striking black and white.",
+    imdbId: "tt7984734"
   },
   artMedium: {
     title: "Everything Everywhere All at Once",
     director: "Daniels",
     duration: "2h 19m",
     year: "2022",
-    description: "A genre-defying multiverse adventure blending action, comedy, and profound emotion."
+    description: "A genre-defying multiverse adventure blending action, comedy, and profound emotion.",
+    imdbId: "tt6710474"
   },
   artLong: {
     title: "Magnolia",
     director: "Paul Thomas Anderson",
     duration: "3h 8m",
     year: "1999",
-    description: "An ambitious mosaic of interconnected lives exploring coincidence and connection."
+    description: "An ambitious mosaic of interconnected lives exploring coincidence and connection.",
+    imdbId: "tt0175880"
   }
 };
 
@@ -497,23 +506,24 @@ function selectMovie(answers) {
   // Return the selected movie
   return movies[genre + duration];
 }
-    function showResult() {
-      const movie = selectMovie(answers);
-      app.innerHTML = `
-        <h2 class="site-title">Cinema Select</h2>
-        <p class="site-subtitle">Your Personalized Recommendation</p>
-        <div class="result">
-          <h2 class="movie-title">${movie.title}</h2>
-          <div class="movie-info">
-            <p><strong>Director:</strong> ${movie.director}</p>
-            <p><strong>Release Year:</strong> ${movie.year}</p>
-            <p><strong>Duration:</strong> ${movie.duration}</p>
-            <p><strong>Synopsis:</strong> ${movie.description}</p>
-          </div>
-          <button class="restart-btn" onclick="restart()">Generate New Recommendation</button>
-        </div>
-      `;
-    }
+   function showResult() {
+  const movie = selectMovie(answers);
+  app.innerHTML = `
+    <h2 class="site-title">Cinema Select</h2>
+    <p class="site-subtitle">Your Personalized Recommendation</p>
+    <div class="result">
+      <h2 class="movie-title">${movie.title}</h2>
+      <div class="movie-info">
+        <p><strong>Director:</strong> ${movie.director}</p>
+        <p><strong>Release Year:</strong> ${movie.year}</p>
+        <p><strong>Duration:</strong> ${movie.duration}</p>
+        <p><strong>Synopsis:</strong> ${movie.description}</p>
+        <p><strong>More Info:</strong> <a href="https://www.imdb.com/title/${movie.imdbId}" target="_blank" style="color: #267BFF; text-decoration: none; font-weight: 600;">View on IMDb →</a></p>
+      </div>
+      <button class="restart-btn" onclick="restart()">Generate New Recommendation</button>
+    </div>
+  `;
+}
 
     function handleAnswer(answer) {
       answers.push(answer);
